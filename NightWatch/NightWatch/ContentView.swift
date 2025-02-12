@@ -20,13 +20,23 @@ struct ContentView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
+                HStack {
+                    Text("\(Image(systemName: "iphone.case")) Fun Languages")
+                        .headerStyle(color: .red)
+                }
+                
+                Spacer()
+                    .frame(height: 20.0)
+                
                 Text("Kotlin")
                     .font(.largeTitle)
                     .foregroundColor(.purple)
                     .padding()
+                    .bold()
 
                 Text("Swift")
                     .font(.title)
+                    .strikethrough()
                     .foregroundColor(.orange)
                     .padding()
 
@@ -45,13 +55,56 @@ struct ContentView: View {
                     .foregroundColor(.red)
                     .padding()
             }
+            .padding(.leading, 17.0)
+            .fontWeight( /*@START_MENU_TOKEN@*/.bold /*@END_MENU_TOKEN@*/)
+            .underline()
+
+            /**
+             I noticed Text has by default font weight inheritance.. So on purpose I assigned the font weight to the parent View.
+             So this actually works.
+             
+             Same case with assigning underline to parent View.
+             */
+
             Spacer()
         }
         Spacer()
     }
 }
 
+// Here is a customed modifier
+struct HeaderStyle: ViewModifier {
+    var color: Color = .yellow
+    func body(content: Content) -> some View {
+        content
+            .font(.title3)
+            .fontWeight(.heavy)
+            .foregroundStyle(color)
+            .textCase(.uppercase)
+            .underline()
+    }
+}
+
+extension View {
+    // to make it easier to access HeaderStyle, we can include an extension!
+    func headerStyle(color: Color = .yellow) -> some View {
+        self.modifier(HeaderStyle(color: color))
+    }
+}
+
 // We use @Preview in Jetpack Compose, this is the syntax to preview a View
-#Preview {
+#Preview("ContentView Portrait") {
     ContentView()
+}
+
+#Preview("ContentView Landscape", traits: .landscapeRight, body: {
+    ContentView()
+})
+
+
+struct ContentViewLargeFont: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge) // Simulate accessibility setting
+    }
 }
