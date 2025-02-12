@@ -1,23 +1,42 @@
-# Swift UI Fundamentals - Chapter 1
+# Swift UI Fundamentals - Chapter 2
 
-The main View containers in Swift UI
+In the content library we can find what Views are available.
 
-<img width="2288" alt="Image" src="https://github.com/user-attachments/assets/6d400dd2-f0b0-4094-82d1-f32cc053c3d2" />
+<img width="681" alt="Image" src="https://github.com/user-attachments/assets/b6a36534-3af3-4b7f-81d3-5471b01c9870" />
 
-<img width="1313" alt="Image" src="https://github.com/user-attachments/assets/d1c87cea-ca5a-44b1-b2c4-ed939bf140f4" />
+We are able to find all attributes, and we can filter to find for example the ones available for Text
 
-
-This is the language used for hierarchy.
-
-<img width="1298" alt="Image" src="https://github.com/user-attachments/assets/fddffa69-c922-49d5-83b8-29e43ba74267" />
+<img width="841" alt="Image" src="https://github.com/user-attachments/assets/74b36e22-116c-466d-bd5e-a983ec7de800" />
 
 
-How subviews take space within its parent view
+Right click on a View, then select Show UI Inspector.. The shortcut is control + option + click.
 
-<img width="1362" alt="Image" src="https://github.com/user-attachments/assets/845aa69d-2e9f-4f85-a3a4-1ead6b91f936" />
+<img width="465" alt="Image" src="https://github.com/user-attachments/assets/5960c057-3170-4394-afc3-18056d86ac6e" />
 
-<img width="1284" alt="Image" src="https://github.com/user-attachments/assets/85c4c779-5ac9-4d6e-b249-72d0946e624d" />
+We can also get to preview to larger fonts when designing Swift UI
 
-Very nice there is an inspector panel to update attributes per view
+![Image](https://github.com/user-attachments/assets/9bda9d78-2363-4573-94dd-8d30184102cb)
 
-<img width="1295" alt="Image" src="https://github.com/user-attachments/assets/937127da-abc5-44d7-bf1d-cab04e4fef4c" />
+In this chapter we learned about making our own modifiers. Doesn't that word sound familiar? Because it is heavily used in Composables!
+
+```swift
+// Here is a customed modifier
+struct HeaderStyle: ViewModifier {
+    var color: Color = .yellow
+    func body(content: Content) -> some View {
+        content
+            .font(.title3)
+            .fontWeight(.heavy)
+            .foregroundStyle(color)
+            .textCase(.uppercase)
+            .underline()
+    }
+}
+
+extension View {
+    // to make it easier to access HeaderStyle, we can include an extension!
+    func headerStyle(color: Color = .yellow) -> some View {
+        self.modifier(HeaderStyle(color: color))
+    }
+}
+```
