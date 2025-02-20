@@ -1,42 +1,20 @@
-# Swift UI Fundamentals - Chapter 2
+# Swift UI Fundamentals - Chapter 4
 
-In the content library we can find what Views are available.
+What it is known as toolbar, or action bar it is known as navigation bar in SwiftUI
 
-<img width="681" alt="Image" src="https://github.com/user-attachments/assets/b6a36534-3af3-4b7f-81d3-5471b01c9870" />
+<img width="791" alt="Image" src="https://github.com/user-attachments/assets/7fa77231-c5a2-4a05-843e-e2fcb687f09a" />
 
-We are able to find all attributes, and we can filter to find for example the ones available for Text
+In Jetpack Compose we have bottom nav bars whereas in Swit UI it is known as Tab Bars.
 
-<img width="841" alt="Image" src="https://github.com/user-attachments/assets/74b36e22-116c-466d-bd5e-a983ec7de800" />
+<img width="712" alt="Image" src="https://github.com/user-attachments/assets/9af6a6b7-eae2-4d49-a501-00ac0d8f3b95" />
 
+In Jetpack compose we have [navigation components](https://developer.android.com/develop/ui/compose/navigation) , whereas in SwitUI they have [Navigation Stacks.](https://developer.apple.com/documentation/swiftui/navigationstack/).
 
-Right click on a View, then select Show UI Inspector.. The shortcut is control + option + click.
+<img width="693" alt="Image" src="https://github.com/user-attachments/assets/a612f0df-8881-46b4-879f-e59af09776dc" />
 
-<img width="465" alt="Image" src="https://github.com/user-attachments/assets/5960c057-3170-4394-afc3-18056d86ac6e" />
+We can make new subviews by extracting views included within another view..
 
-We can also get to preview to larger fonts when designing Swift UI
+<img width="496" alt="Image" src="https://github.com/user-attachments/assets/8b77e6c1-a7d4-494e-92c8-0735e97de8b2" />
 
-![Image](https://github.com/user-attachments/assets/9bda9d78-2363-4573-94dd-8d30184102cb)
-
-In this chapter we learned about making our own modifiers. Doesn't that word sound familiar? Because it is heavily used in Composables!
-
-```swift
-// Here is a customed modifier
-struct HeaderStyle: ViewModifier {
-    var color: Color = .yellow
-    func body(content: Content) -> some View {
-        content
-            .font(.title3)
-            .fontWeight(.heavy)
-            .foregroundStyle(color)
-            .textCase(.uppercase)
-            .underline()
-    }
-}
-
-extension View {
-    // to make it easier to access HeaderStyle, we can include an extension!
-    func headerStyle(color: Color = .yellow) -> some View {
-        self.modifier(HeaderStyle(color: color))
-    }
-}
+What is nice about this approach is having Views to be reusable and since all of the structure of Views is based on structs it doesn't load up CPU, and there is no inheritance baggage added by each subview. So we are safe to make as many subviews as we want!!!
 ```

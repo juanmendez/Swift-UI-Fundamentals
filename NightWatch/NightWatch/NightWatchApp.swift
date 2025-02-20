@@ -11,7 +11,7 @@ import SwiftUI
 struct NightWatchApp: App {
     var body: some Scene {
         WindowGroup {
-            ListWithSectionsView()
+            SectionsContainerView()
         }
     }
 }
