@@ -6,14 +6,20 @@
 //
 import SwiftUI
 
-struct SectionHeaderModel {
+struct SectionHeaderModel: Hashable {
     let symbolSystemName: String
     let headerText: String
     let fontColor: Color
-    
+
     init(symbolSystemName: String, headerText: String, fontColor: Color = .black) {
         self.symbolSystemName = symbolSystemName
         self.headerText = headerText
         self.fontColor = fontColor
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(symbolSystemName)
+        hasher.combine(headerText)
+        hasher.combine(fontColor)
     }
 }

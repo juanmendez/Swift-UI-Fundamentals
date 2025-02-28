@@ -15,8 +15,8 @@ struct SwiftUIGrid: View {
                 GridItem(.fixed(100)),
                 GridItem(.fixed(100)),
             ]) {
-                ForEach(nightlyTasks, id: \.self) { taskName in
-                    Text(taskName)
+                ForEach(nightlyTasks, id: \.self) { task in
+                    Text(task.name)
                 }
             }
         }
@@ -29,8 +29,8 @@ struct SwiftUIGrid: View {
                 ],
                 spacing: 60
             ) {
-                ForEach(nightlyTasks, id: \.self) { taskName in
-                    Text(taskName)
+                ForEach(nightlyTasks, id: \.self) { task in
+                    Text(task.name)
                 }
             }
         }

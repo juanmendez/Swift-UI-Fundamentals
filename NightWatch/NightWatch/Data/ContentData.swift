@@ -6,23 +6,41 @@
 //
 import SwiftUI
 
+struct TaskModel: Hashable {
+    let name: String
+    let isCompleted: Bool
+    let lastCompleted: Date?
+
+    init(name: String, isCompleted: Bool = false, lastCompleted: Date? = nil) {
+        self.name = name
+        self.isCompleted = isCompleted
+        self.lastCompleted = lastCompleted
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+        hasher.combine(isCompleted)
+        hasher.combine(lastCompleted)
+    }
+}
+
 let nightlyTasks = [
-    "Check all windows",
-    "Check all doors",
-    "Check that the safe is locked",
-    "Check the mailbox",
-    "Inspect security cameras",
-    "Clear ice from sidewalks",
-    "Document \"strange and unusual\" occurrences",
+    TaskModel(name: "Check all windows"),
+    TaskModel(name: "Check all doors"),
+    TaskModel(name: "Check that the safe is locked"),
+    TaskModel(name: "Check the mailbox"),
+    TaskModel(name: "Inspect security cameras"),
+    TaskModel(name: "Clear ice from sidewalks"),
+    TaskModel(name: "Document \"strange and unusual\" occurrences"),
 ]
 
 let weeklyTasks = [
-    "Check inside all vacant rooms",
-    "Walk the perimeter of the property",
+    TaskModel(name: "Check inside all vacant rooms"),
+    TaskModel(name: "Walk the perimeter of the property"),
 ]
 
 let monthlyTasks = [
-    "Test security alarm",
-    "Test motion detectors",
-    "Test smoke alarms",
+    TaskModel(name: "Test security alarm"),
+    TaskModel(name: "Test motion detectors"),
+    TaskModel(name: "Test smoke alarms"),
 ]

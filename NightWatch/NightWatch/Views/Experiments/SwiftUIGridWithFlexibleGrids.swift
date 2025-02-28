@@ -15,8 +15,8 @@ struct SwifUiWithFlexibleGrids: View {
                 GridItem(.flexible(minimum: 0, maximum: .infinity)),
                 GridItem(.flexible(minimum: 0, maximum: .infinity)),
             ]) {
-                ForEach(nightlyTasks, id: \.self) { taskName in
-                    Text(taskName)
+                ForEach(nightlyTasks, id: \.self) { task in
+                    Text(task.name)
                 }
             }
         }
@@ -29,8 +29,8 @@ struct SwifUiWithFlexibleGrids: View {
                 ],
                 spacing: 60
             ) {
-                ForEach(nightlyTasks, id: \.self) { taskName in
-                    Text(taskName)
+                ForEach(nightlyTasks, id: \.self) { task in
+                    Text(task.name)
                 }
             }
         }

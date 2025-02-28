@@ -1,0 +1,13 @@
+{
+    "configurations": [
+        {
+            "type": "xcode-app",
+            "name": "Nightwatch Config",
+            "buildTarget": {
+                "project": "NightWatch",
+                "target": "NightWatch",
+            },
+            "configuration": "Debug"
+        }
+    ]
+}

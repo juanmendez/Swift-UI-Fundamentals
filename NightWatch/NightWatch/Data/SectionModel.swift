@@ -6,9 +6,18 @@
 //
 import SwiftUI
 
-struct SectionModel {
+struct SectionModel: Equatable, Hashable {
     let sectionHeaderModel: SectionHeaderModel
-    let tasks: [String]
+    let tasks: [TaskModel]
+
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.sectionHeaderModel == rhs.sectionHeaderModel && lhs.tasks == rhs.tasks
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(sectionHeaderModel)
+        hasher.combine(tasks)
+    }
 }
 
 let sectionHeaderModels = [

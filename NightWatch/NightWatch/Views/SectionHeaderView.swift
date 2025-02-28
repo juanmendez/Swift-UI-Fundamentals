@@ -8,7 +8,7 @@ import SwiftUI
 
 struct SectionHeaderView: View {
     let sectionHeaderModel: SectionHeaderModel
-    
+
     var body: some View {
         HStack {
             Image(systemName: sectionHeaderModel.symbolSystemName)
